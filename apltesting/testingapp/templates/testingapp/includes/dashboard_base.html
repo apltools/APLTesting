@@ -1,0 +1,35 @@
+{% extends "testingapp/includes/bootstrap_base.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static "testingapp/styles.css" %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/r-2.2.3/datatables.min.css"/>
+{% endblock head %}
+
+{% block bc %}
+    bg-light
+{% endblock bc %}
+
+{% block content %}
+    {% include "testingapp/includes/sidebar.html" %}
+    <div class="page-content p-5" id="content">
+        <button id="sidebarCollapse" type="button" class="btn btn-light shadow-sm mb-3 d-md-none"><i class="fa fa-bars"></i></button>
+        {% block dashboard_content %}{% endblock dashboard_content %}
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/r-2.2.3/datatables.min.js"></script>
+
+    <script>
+        $(function() {
+            // Menu toggling
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+            });
+        });
+    </script>
+
+    {% block dashboard_scripts %}{% endblock dashboard_scripts %}
+{% endblock scripts %}

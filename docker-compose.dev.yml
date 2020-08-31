@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      - TZ=Europe/Amsterdam
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  web:
+    build:
+      context: ./apltesting
+      dockerfile: Dockerfile.dev
+    command: python3 -b -u /code/manage.py runserver 0.0.0.0:8000
+    env_file: .env
+    ports:
+      - 8000:8000
+    volumes:
+      - ./apltesting/:/code
+    depends_on:
+      - db
+volumes:
+  postgres_data:

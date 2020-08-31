@@ -1,0 +1,29 @@
+{% extends "testingapp/includes/public_base.html"%}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Home | APL Testing {% endblock title %}
+
+{% block public_content %}
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <div class="card card-block w-50 mx-auto">
+                <div class="card-body">
+                    <h1>Hi there!</h1>
+                    We're sorry, this website cannot be visited directly. Feel free to join us through your favorite course website, though!
+
+                    <div class="list-group mt-3">
+                        <a href="https://prog1.mprog.nl/" class="list-group-item list-group-item-action">Programming 1 (Programming minor)</a>
+                        <a href="https://progik.mprog.nl/" class="list-group-item list-group-item-action">Programming for Information Sciences</a>
+                        <a href="https://progki.mprog.nl/" class="list-group-item list-group-item-action">Programming for Artificial Intelligence</a>
+                    </div>
+
+                </div>
+                <div class="card-footer text-muted">
+                    This website is part of the <a href="https://proglab.nl">Programming Lab</a> of the <a href="https://uva.nl">University of Amsterdam</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock public_content %}

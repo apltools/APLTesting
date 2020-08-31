@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      - TZ=Europe/Amsterdam
+    volumes:
+      - postgres_data_apltesting:/var/lib/postgresql/data/
+    restart: unless-stopped
+  web:
+    build:
+      context: ./apltesting
+      dockerfile: Dockerfile.prod
+      args:
+        - buildno=30
+    command: gunicorn apltesting.wsgi -b 0.0.0.0:8007
+    env_file: .env
+    environment:
+      - DEBUG=0
+    volumes:
+      - ./staticfiles:/code/staticfiles
+    ports:
+      - 8007:8007
+    depends_on:
+      - db
+    restart: unless-stopped
+volumes:
+  postgres_data_apltesting:

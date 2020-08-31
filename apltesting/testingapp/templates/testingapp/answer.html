@@ -1,0 +1,38 @@
+{% extends "testingapp/includes/public_base.html"%}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Answer | APL Testing {% endblock title %}
+
+{% block public_content %}
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <div class="card card-block w-50 mx-auto">
+                <div class="card-body">
+                    <h1>{{ test.name }}</h1>
+                    {% if incorrect %}
+                        Unfortunately, that is not correct.<br><br>
+                        {% if question.question_type == 'Final value' %}
+                            <b>Your answers:</b> {{ student_answers }} <br>
+                            <b>Correct answers:</b> {{ correct_answers }} <br><br>
+                        {% elif question.question_type == 'Evaluate' %}
+                            <b>Your answer:</b> {{ student_answers }} <br>
+                            <b>Correct answer:</b> {{ correct_answers }} <br><br>
+                        {% endif %}
+                        <pre>
+{{ code }}
+                        </pre>
+                    {% else %}
+                        Great! That's correct.
+                    {% endif%}
+                    You answered {{ amount_correct }} out of {{ amount_total }} questions correctly.
+                    <br><br> <a href=" {% url 'test' %}" class="btn btn-primary">Continue</a>
+                </div>
+                <div class="card-footer text-muted">
+                    This website is part of the <a href="https://proglab.nl">Programming Lab</a> of the <a href="https://uva.nl">University of Amsterdam</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock public_content %}

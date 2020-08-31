@@ -1,0 +1,57 @@
+{% extends "testingapp/includes/dashboard_base.html"%}
+
+{% block title %} Questions | APL Testing {% endblock title %}
+
+{% block dashboard_content %}
+    <div class="row">
+        <div class="col col-12">
+            <h1>Questions</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-12">
+            <p class="lead text-muted">Click on a question to edit or select variants.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-12">
+            <table id="questions_table" class="table table-striped dt-responsive nowrap hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Test</th>
+                        <th>Question</th>
+                        <th>Type</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for question in object_list %}
+                        <tr>
+                            <td>{{ question.id }}</td>
+                            <td>{{ question.test.name }}</td>
+                            <td>{{ question.order }}</td>
+                            <td>{{ question.question_type }}</td>
+                            <td>{{ question.active|yesno:"Yes,No" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock dashboard_content %}
+
+{% block dashboard_scripts %}
+    <script>
+        $(document).ready( function () {
+            var table = $('#questions_table').DataTable({
+                "lengthChange": false
+            });
+
+            $('#questions_table tbody').on('click', 'tr', function () {
+                var data = table.row( this ).data();
+                window.location.href = 'question/' + data[0];
+            });
+        });
+    </script>
+{% endblock dashboard_scripts %}

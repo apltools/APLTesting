@@ -1,0 +1,19 @@
+{% extends "testingapp/includes/bootstrap_base.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static "testingapp/styles.css" %}">
+{% endblock head %}
+
+{% block bc %}
+    bg-darkblue
+{% endblock bc %}
+
+{% block content %}
+    {% block public_content %}{% endblock public_content %}
+{% endblock content %}
+
+{% block scripts %}
+    {% block public_scripts %}{% endblock public_scripts %}
+{% endblock scripts %}

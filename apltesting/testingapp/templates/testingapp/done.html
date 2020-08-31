@@ -1,0 +1,25 @@
+{% extends "testingapp/includes/public_base.html"%}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Done | APL Testing {% endblock title %}
+
+{% block public_content %}
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <div class="card card-block w-50 mx-auto">
+                <div class="card-body">
+                    <h1>Complete!</h1>
+                    This assignment, {{ test }}, is now complete! If you wish to practice more, feel free to do this assignment again with freshly generated questions.
+                    
+                    <br><br> You answered {{ amount_correct }} out of {{ amount_total }} questions correctly.
+                    <br><br> <a href=" {% url 'select' %}" class="btn btn-primary">Continue</a>
+                </div>
+                <div class="card-footer text-muted">
+                    This website is part of the <a href="https://proglab.nl">Programming Lab</a> of the <a href="https://uva.nl">University of Amsterdam</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock public_content %}

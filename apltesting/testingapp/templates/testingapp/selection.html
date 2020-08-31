@@ -1,0 +1,30 @@
+{% extends "testingapp/includes/public_base.html"%}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Select assignment | APL Testing {% endblock title %}
+
+{% block public_content %}
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <div class="card card-block w-50 mx-auto">
+                <div class="card-body">
+                    <h1>Welcome!</h1>
+                    Which assignment would you like to do?
+
+                    <div class="list-group mt-3">
+                        {% for test in object_list %}
+                            {% if test.active %}
+                                <a href="{% url 'start' test.short %}" class="list-group-item list-group-item-action">{{ test.name }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    This website is part of the <a href="https://proglab.nl">Programming Lab</a> of the <a href="https://uva.nl">University of Amsterdam</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock public_content %}

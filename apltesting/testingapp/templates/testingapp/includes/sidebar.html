@@ -1,0 +1,10 @@
+<div class="vertical-nav bg-blue" id="sidebar">
+    <h1 class="h3 pl-3 pt-3 text-light">APL Testing</h1>
+    <p class="text-light font-weight-bold text-uppercase px-3 small py-3 mb-0">Main menu</p>
+    <ul class="nav flex-column mb-0">
+        {% include "testingapp/includes/sidebar_item.html" with path="questions" icon="fa-file-text" title="Questions" %}
+    </ul>
+    <p class="text-light font-weight-bold text-uppercase px-3 small py-3 mb-0">{{ request.user.first_name }} {{ request.user.last_name }}</p>
+    <ul class="nav flex-column mb-0">
+    </ul>
+</div>
