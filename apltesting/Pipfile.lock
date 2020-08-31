@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "57bcdfef796d71f22ae053418c2d51b0ff2d67475f0288e1ffe0af6f3f1230e5"
+            "sha256": "131a52ce9f858fe95db98a02744c1907d4c0883416cf725891efa78ea620c4fe"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -30,9 +30,9 @@
             ],
             "version": "==3.2.10"
         },
-        "basis-testing>=0-0-1": {
+        "basis-testing>=0-0-2": {
             "git": "https://github.com/apltools/basis_testing.git",
-            "ref": "ad027da611738211b02b49c2a55abb65c97d83b7"
+            "ref": "d3e07135c40bdda0826a53184203ee1f7afc6a0d"
         },
         "basis>=0-0-1": {
             "git": "https://github.com/jelleas/basis.git",
