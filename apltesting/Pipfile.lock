@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "77abbfe88927b80b57ab43c83228e706faff29033995c2095c0f26d2633c85e5"
+            "sha256": "57bcdfef796d71f22ae053418c2d51b0ff2d67475f0288e1ffe0af6f3f1230e5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,7 +32,7 @@
         },
         "basis-testing>=0-0-1": {
             "git": "https://github.com/apltools/basis_testing.git",
-            "ref": "3765fdda8f5417ffce02ce4604266cf3351f6728"
+            "ref": "ad027da611738211b02b49c2a55abb65c97d83b7"
         },
         "basis>=0-0-1": {
             "git": "https://github.com/jelleas/basis.git",
@@ -115,6 +115,13 @@
                 "sha256:e162203737712307dfe78860cc56c8da8a852ab2ee33750e33aeadf38d12c548"
             ],
             "version": "==0.3.1"
+        },
+        "xeger": {
+            "hashes": [
+                "sha256:2a91341fc2c814b27917b8bd24e8d212c8a3b904d98e9a6703d27484c2cb0f82"
+            ],
+            "index": "pypi",
+            "version": "==0.3.5"
         }
     },
     "develop": {}

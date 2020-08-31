@@ -14,6 +14,7 @@ numpy = "*"
 antlr4-python3-runtime = "==4.7.2"
 colorama = "==0.4.1"
 gunicorn = "*"
+xeger = "*"
 
 [requires]
 python_version = "3.8"
