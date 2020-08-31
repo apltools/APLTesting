@@ -106,7 +106,7 @@ class TestView(View):
                     student_answers += form.cleaned_data[value].strip() + '; '
 
                 # Compile the student's answers
-                if request.session['answers'][value].strip() != form.cleaned_data[value].strip():
+                if (request.session['answers'][value].strip() != form.cleaned_data[value].strip()) and (request.session['answers'][value].strip() != 'True' or form.cleaned_data[value].strip().lower() != 'true') and (request.session['answers'][value].strip() != 'False' or form.cleaned_data[value].strip().lower() != 'false'):
                     incorrect = True
 
             # Compile correct ansers
