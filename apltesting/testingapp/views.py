@@ -78,7 +78,7 @@ class TestView(View):
         # Prepare the form
         form = forms.Form()
         for value in request.session['answers']:
-            form.fields[value] = forms.CharField()
+            form.fields[value] = forms.CharField(label=value)
 
         # Render
         return render(request, 'testingapp/question.html', {'form': form, 'test': test, 'question': question, 'full_text': request.session['code']})
@@ -91,7 +91,7 @@ class TestView(View):
         # Prepare the form
         form = forms.Form(request.POST)
         for value in request.session['answers']:
-            form.fields[value] = forms.CharField()
+            form.fields[value] = forms.CharField(label=value)
 
         # Process the form
         if form.is_valid():
