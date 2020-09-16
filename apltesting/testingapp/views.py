@@ -76,7 +76,7 @@ class TestView(View):
                 request.session['code'] = template.full_test
             elif question.question_type == 'Printed output':
                 template.complete().calc_printed_output()
-                request.session['answers'] = {'result': template.printed_output}
+                request.session['answers'] = {'result': template.printed_output.replace('"', '')}
                 request.session['code'] = template.full_test
 
         # Prepare the form
