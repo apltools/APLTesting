@@ -74,6 +74,10 @@ class TestView(View):
                 template.complete().calc_evaluate()
                 request.session['answers'] = {'result': template.evaluate}
                 request.session['code'] = template.full_test
+            elif question.question_type == 'Printed output':
+                template.complete().calc_printed_output()
+                request.session['answers'] = {'result': template.printed_output}
+                request.session['code'] = template.full_test
 
         # Prepare the form
         form = forms.Form()
