@@ -16,7 +16,7 @@
                         {% if question.question_type == 'Final value' %}
                             <b>Your answers:</b> {{ student_answers }} <br>
                             <b>Correct answers:</b> {{ correct_answers }} <br><br>
-                        {% elif question.question_type == 'Evaluate' || question.question_type == 'Printed output' %}
+                        {% elif question.question_type == 'Evaluate' or question.question_type == 'Printed output' %}
                             <b>Your answer:</b> {{ student_answers }} <br>
                             <b>Correct answer:</b> {{ correct_answers }} <br><br>
                         {% endif %}
