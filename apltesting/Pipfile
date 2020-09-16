@@ -10,7 +10,7 @@ django = "*"
 django-crispy-forms = "*"
 numpy = "*"
 "basis>=0-0-3" = {git = "https://github.com/jelleas/basis.git"}
-"basis-testing>=0-0-4" = {git = "https://github.com/apltools/basis_testing.git"}
+"basis-testing>=0-0-5" = {git = "https://github.com/apltools/basis_testing.git"}
 antlr4-python3-runtime = "==4.7.2"
 colorama = "==0.4.1"
 gunicorn = "*"
