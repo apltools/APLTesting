@@ -50,8 +50,11 @@ class StartView(View):
         request.session['repeat'] = 1
         request.session['correct'] = 0
         request.session['total'] = 0
-        request.session['code'] = ''
-        request.session['answers'] = {}
+        try:
+            del request.session['code']
+            del request.session['answers']
+        except:
+            pass
 
         return redirect('test')
 
