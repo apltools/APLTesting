@@ -11,6 +11,7 @@
             <div class="card card-block w-50 mx-auto">
                 <div class="card-body">
                     <h1>{{ test.name }}</h1>
+                    <span class="badge text-white bg-primary">Question {{ request.session.total|add:1 }} of {{ total_questions }}</span><br><br>
                     {% if question.question_type == 'Final value' %}
                         Evaluate the snippet of code below. Provide the <b>final value</b> for each of the variables. <br>
                     {% elif question.question_type == 'Evaluate' %}

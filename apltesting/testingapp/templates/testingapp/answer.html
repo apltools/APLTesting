@@ -26,8 +26,9 @@
                     {% else %}
                         Great! That's correct.
                     {% endif%}
-                    You answered {{ amount_correct }} out of {{ amount_total }} questions correctly.
-                    <br><br> <a href=" {% url 'test' %}" class="btn btn-primary" autofocus>Continue</a>
+                    You answered {{ amount_correct }} out of {{ amount_total }} questions correctly. <br><br>
+                     
+                    <input type="button" value="Continue" onclick="window.location.href = '{% url 'test' %}'" class="btn btn-primary" autofocus>
                 </div>
                 <div class="card-footer text-muted">
                     This website is part of the <a href="https://proglab.nl">Programming Lab</a> of the <a href="https://uva.nl">University of Amsterdam</a>.

@@ -14,7 +14,7 @@
                     This assignment, {{ test }}, is now complete! If you wish to practice more, feel free to do this assignment again with freshly generated questions.
                     
                     <br><br> You answered {{ amount_correct }} out of {{ amount_total }} questions correctly.
-                    <br><br> <a href=" {% url 'select' %}" class="btn btn-primary" autofocus>Continue</a>
+                    <br><br> <input type="button" value="Continue" onclick="closeTest()" class="btn btn-primary" autofocus>
                 </div>
                 <div class="card-footer text-muted">
                     This website is part of the <a href="https://proglab.nl">Programming Lab</a> of the <a href="https://uva.nl">University of Amsterdam</a>.
@@ -23,3 +23,22 @@
         </div>
     </div>
 {% endblock public_content %}
+
+{% block public_scripts %}
+    <script>
+        function closeTest() {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Hold on!',
+                text: 'If you haven\'t already, you should take a screenshot of your results now, and upload it on the course website.',
+                showCancelButton: true,
+                confirmButtonText: 'Done! Close the test',
+                cancelButtonText: 'Take me back!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '{% url 'select' %}';
+                }
+            });
+        }
+    </script>
+{% endblock public_scripts %}

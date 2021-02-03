@@ -25,12 +25,16 @@ class EntryView(View):
 class DoneView(View):
     def get(self, request, *args, **kwargs):
         # Prepare data we still need
-        test = Test.objects.filter(short=request.session['test']).first()
-        context = {
-            'amount_correct': request.session['correct'],
-            'amount_total': request.session['total'],
-            'test': test.name
-        }
+        try:
+            test = Test.objects.filter(short=request.session['test']).first()
+            context = {
+                'amount_correct': request.session['correct'],
+                'amount_total': request.session['total'],
+                'test': test.name
+            }
+        except KeyError:
+            # Catch if the user refreshes the page
+            return redirect('select')
 
         del request.session['correct']
         del request.session['total']
@@ -63,6 +67,9 @@ class TestView(View):
         # Get the test and question
         test = Test.objects.filter(short=request.session['test']).first()
         question = Question.objects.filter(test=test, order=request.session['question']).first()
+
+        # Calculate the total amount of questions in the test
+        total_questions = sum(question.repeat for question in test.question_set.all())
         
         if not question:
             return redirect('done')
@@ -90,7 +97,7 @@ class TestView(View):
             form.fields[value] = forms.CharField(label=value)
 
         # Render
-        return render(request, 'testingapp/question.html', {'form': form, 'test': test, 'question': question, 'full_text': request.session['code']})
+        return render(request, 'testingapp/question.html', {'form': form, 'test': test, 'question': question, 'full_text': request.session['code'], 'total_questions': total_questions})
     
     def post(self, request, *args, **kwargs):
         # Get the test and question
