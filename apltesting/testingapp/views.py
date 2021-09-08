@@ -30,6 +30,7 @@ class DoneView(View):
             context = {
                 'amount_correct': request.session['correct'],
                 'amount_total': request.session['total'],
+                'all': request.session['correct'] == request.session['total'],
                 'test': test.name
             }
         except KeyError:
