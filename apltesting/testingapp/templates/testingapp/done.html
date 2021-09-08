@@ -13,7 +13,7 @@
                     <h1>Complete!</h1>
                     This assignment, {{ test }}, is now complete! If you wish to practice more, feel free to do this assignment again with freshly generated questions.
                     
-                    <br><br> You answered {{ amount_correct }} out of {{ amount_total }} questions correctly.
+                    <br><br> You answered {{ amount_correct }} out of {{ amount_total }} questions correctly. {% if all %}You should submit a screenshot of this page on the course website.{% endif %}
                     <br><br> <input type="button" value="Restart" onclick="closeTest()" class="btn btn-primary" autofocus>
                 </div>
                 <div class="card-footer text-muted">
@@ -27,18 +27,22 @@
 {% block public_scripts %}
     <script>
         function closeTest() {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Hold on!',
-                text: 'If you haven\'t already, you should take a screenshot of your results now, and upload it on the course website.',
-                showCancelButton: true,
-                confirmButtonText: 'Done! Close the test',
-                cancelButtonText: 'Take me back!',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = '{% url 'select' %}';
-                }
-            });
+            {% if all %}
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Hold on!',
+                    text: 'If you haven\'t already, you should take a screenshot of your results now, and upload it on the course website.',
+                    showCancelButton: true,
+                    confirmButtonText: 'Done! Close the test',
+                    cancelButtonText: 'Take me back!',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '{% url 'select' %}';
+                    }
+                });
+            {% else %}
+                window.location.href = '{% url 'select' %}';
+            {% endif %}
         }
     </script>
 {% endblock public_scripts %}
