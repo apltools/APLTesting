@@ -25,7 +25,7 @@
                     <form action="{% url 'test' %}" method="post">
                         {% csrf_token %}
                         {{ form|crispy }}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" onclick="this.form.submit(); this.disabled=true;" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
                 <div class="card-footer text-muted">
