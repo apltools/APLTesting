@@ -28,7 +28,7 @@
                     {% endif%}
                     You answered {{ amount_correct }} out of {{ amount_total }} questions correctly. <br><br>
                      
-                    <input type="button" value="Continue" onclick="window.location.href = '{% url 'test' %}'" class="btn btn-primary" autofocus>
+                    <input type="button" value="Continue" onclick="this.disabled = true; window.location.href = '{% url 'test' %}'" class="btn btn-primary" autofocus>
                 </div>
                 <div class="card-footer text-muted">
                     This website is part of the <a href="https://proglab.nl">Programming Lab</a> of the <a href="https://uva.nl">University of Amsterdam</a>.
