@@ -12,6 +12,8 @@ then
 fi
 
 python3 manage.py migrate --noinput
+python3 manage.py loaddata tests --noinput
+python3 manage.py loaddata questions --noinput
 python3 manage.py collectstatic --no-input --clear
 
 exec "$@"
