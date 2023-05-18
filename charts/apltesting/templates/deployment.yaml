@@ -30,6 +30,8 @@ spec:
               value: "0"
             - name: SQL_ENGINE
               value: django.db.backends.postgresql
+            - name: SQL_NAME
+              value: "{{ .Values.db.name }}"
             - name: SQL_HOST
               value: "{{ .Values.db.host }}"
             - name: SQL_USER

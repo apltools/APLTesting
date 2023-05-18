@@ -5,6 +5,7 @@ tag: latest
 
 db:
   host: apltesting-db
+  name: apltesting
   user: apltesting
 
 azure:
