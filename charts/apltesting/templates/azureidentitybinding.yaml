@@ -1,0 +1,10 @@
+{{- if .Values.azure }}
+apiVersion: aadpodidentity.k8s.io/v1
+kind: AzureIdentityBinding
+metadata:
+  name: apltesting-identity-aks-kv-binding
+  namespace: "{{ .Release.Namespace }}"
+spec:
+  azureIdentity: apltesting-identity-aks-kv
+  selector: apltesting-azure-kv
+{{- end }}

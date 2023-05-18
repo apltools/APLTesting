@@ -1,0 +1,28 @@
+trigger:
+    - master
+
+variables:
+    - group: k8s
+
+pool: k8s
+
+jobs:
+    - job: build
+      steps:
+      - script: |
+          set -euxo pipefail
+          docker build -f Dockerfile.prod -t "fnwicr.azurecr.io/apltesting:latest" .
+          docker push "fnwicr.azurecr.io/apltesting:latest"
+        displayName: Build and push Docker container
+        workingDirectory: ./apltesting
+
+      - script: |
+          set -euxo pipefail
+          VERSION="0.${BUILD_BUILDNUMBER}"
+          helm package --version "${VERSION}" --app-version "${VERSION}" charts/apltesting
+          helm push "apltesting-${VERSION}.tgz" oci://fnwicr.azurecr.io/helm
+          curl "https://k8s.datanose.nl/gitops-updater?name=apltesting&secret=${UPDATER_SECRET}&version=${VERSION}"
+        displayName: Build and push Helm chart
+        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+        env:
+            UPDATER_SECRET: $(DEPLOY_SECRET)
