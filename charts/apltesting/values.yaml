@@ -1,0 +1,21 @@
+hostname: apltesting.local
+ingressClass: nginx
+image: apltesting
+tag: latest
+
+db:
+  host: apltesting-db
+  user: apltesting
+
+azure:
+  keyvaultName: keyvaultName
+  resourceGroup: resourceGroupName
+  subscriptionId: subscriptionId
+  tenantId: tenantId
+  clientId: clientId
+  identityName: identityName
+  secrets:
+    - name: apltesting-database-password
+      key: SQL_PASS
+    - name: apltesting-secret-key
+      key: SECRET_KEY
