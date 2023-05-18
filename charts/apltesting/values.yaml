@@ -1,6 +1,6 @@
 hostname: apltesting.local
 ingressClass: nginx
-image: apltesting
+image: fnwicr.azurecr.io/apltesting
 tag: latest
 
 db:
