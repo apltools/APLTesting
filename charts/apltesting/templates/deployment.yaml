@@ -27,7 +27,7 @@ spec:
             - name: APLTESTING_VERSION
               value: "{{ .Chart.AppVersion }}"
             - name: DEBUG
-              value: 0
+              value: "0"
             - name: SQL_ENGINE
               value: django.db.backends.postgresql
             - name: SQL_HOST
