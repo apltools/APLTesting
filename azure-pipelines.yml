@@ -1,5 +1,5 @@
 trigger:
-    - setup-build
+    - master
 
 variables:
     - group: k8s
@@ -23,6 +23,6 @@ jobs:
           helm push "apltesting-${VERSION}.tgz" oci://fnwicr.azurecr.io/helm
           curl "https://k8s.datanose.nl/gitops-updater?name=apltesting&secret=${UPDATER_SECRET}&version=${VERSION}"
         displayName: Build and push Helm chart
-        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/setup-build'))
+        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
         env:
             UPDATER_SECRET: $(DEPLOY_SECRET)
